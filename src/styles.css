@@ -1,0 +1,183 @@
+:root {
+  color: #2c1810;
+  background: #f3e6d4;
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.45;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+button,
+input,
+select { font: inherit; }
+
+button { cursor: pointer; }
+
+:focus-visible {
+  outline: 3px solid #2f6b4f;
+  outline-offset: 2px;
+}
+
+.balcao {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.topo {
+  margin-bottom: 24px;
+}
+
+.marca {
+  margin: 0;
+  color: #8d3018;
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Palatino Linotype", Palatino, serif;
+  font-weight: 600;
+}
+
+h1 { margin: 4px 0; font-size: 2.4rem; }
+
+h2 { margin: 0 0 12px; font-size: 1.5rem; }
+
+h3 { margin: 0; font-size: 1.15rem; }
+
+.apoio { margin: 0; color: #6d5648; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 20px;
+}
+
+.painel {
+  background: #fffaf4;
+  border: 1px solid #eadccb;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 16px 40px rgba(70, 36, 16, 0.06);
+}
+
+.pedido { border-top: 6px solid #8d3018; }
+
+label {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 0.92rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #eadccb;
+  border-radius: 12px;
+  background: #fff;
+  color: #2c1810;
+}
+
+.filtros,
+.qtd,
+.grade { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.filtros { margin: 14px 0; }
+
+.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+.produto,
+.linha {
+  border: 1px solid #eadccb;
+  border-radius: 16px;
+  padding: 12px;
+  background: #fff;
+}
+
+.produto p,
+.linha p { margin: 6px 0; color: #6d5648; }
+
+.preco { color: #2c1810; font-weight: 700; }
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: #8d3018;
+  color: #fffaf4;
+}
+
+button.secundario {
+  background: transparent;
+  color: #8d3018;
+  box-shadow: inset 0 0 0 1px #8d3018;
+}
+
+button[aria-pressed="true"] {
+  background: #2c1810;
+  color: #fffaf4;
+  box-shadow: none;
+}
+
+.qtd { align-items: center; }
+
+.qtd span {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.totais { margin: 16px 0; }
+
+.totais div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #eadccb;
+}
+
+.totais dt { color: #6d5648; }
+
+.totais dd { margin: 0; font-weight: 700; }
+
+.cupons {
+  margin: 12px 0;
+  padding-left: 18px;
+  color: #6d5648;
+}
+
+.cupons code {
+  color: #2c1810;
+  font-weight: 700;
+}
+
+.aviso {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f8e4d4;
+}
+
+.vazio { color: #6d5648; }
+
+.comprovante pre {
+  white-space: pre-wrap;
+  font-family: Consolas, "Cascadia Mono", monospace;
+  background: #fff;
+  border: 1px dashed #d7c4ae;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+#cupom-ativo { color: #2f6b4f; font-weight: 700; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+  h1 { font-size: 2rem; }
+}

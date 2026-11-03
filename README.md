@@ -6,7 +6,9 @@ Para abrir localmente, use Node.js 22, rode `npm install` e depois `npm run dev`
 
 ## Integrantes
 
-- Preencher com o nome completo de cada integrante do grupo.
+- Bruna Saturnino de Carvalho
+- Rafael Araujo Magesty
+- Gabriell Laurentino
 
 ## Sobre o sistema
 

@@ -49,42 +49,4 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: ./coverage/lcov.info
-          token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
-
-  publicar:
-    name: GitHub Pages
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: testes
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.publicacao.outputs.page_url }}
-    steps:
-      - name: Baixar o código
-        uses: actions/checkout@v4
-
-      - name: Instalar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Instalar dependências
-        run: npm ci
-
-      - name: Gerar a versão de produção
-        run: npm run build
-
-      - name: Enviar os arquivos
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Publicar
-        id: publicacao
-        uses: actions/deploy-pages@v4

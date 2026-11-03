@@ -11,6 +11,9 @@ jobs:
   testes:
     name: ${{ matrix.sistema }}
     runs-on: ${{ matrix.sistema }}
+    permissions:
+      contents: read
+      id-token: write
     strategy:
       fail-fast: false
       matrix:
@@ -50,3 +53,4 @@ jobs:
         with:
           files: ./coverage/lcov.info
           fail_ci_if_error: true
+          use_oidc: true

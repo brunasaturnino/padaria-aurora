@@ -1,0 +1,90 @@
+name: Testes
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    name: ${{ matrix.sistema }}
+    runs-on: ${{ matrix.sistema }}
+    strategy:
+      fail-fast: false
+      matrix:
+        sistema: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar testes de unidade com cobertura
+        run: npm run test:coverage
+
+      - name: Instalar Chromium no Linux
+        if: runner.os == 'Linux'
+        run: npx playwright install --with-deps chromium
+
+      - name: Instalar Chromium no macOS e no Windows
+        if: runner.os != 'Linux'
+        run: npx playwright install chromium
+
+      - name: Rodar testes de ponta a ponta
+        run: npm run test:e2e
+
+      - name: Publicar cobertura no Codecov
+        if: runner.os == 'Linux'
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+
+  publicar:
+    name: GitHub Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: testes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacao.outputs.page_url }}
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Gerar a versão de produção
+        run: npm run build
+
+      - name: Enviar os arquivos
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Publicar
+        id: publicacao
+        uses: actions/deploy-pages@v4

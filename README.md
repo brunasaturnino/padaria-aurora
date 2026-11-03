@@ -48,4 +48,4 @@ npm run test:e2e
 
 `npm run test:e2e` sobe o balcão e executa os cinco fluxos: abrir o catálogo, incluir um item, aumentar a quantidade, aplicar o cupom `AURORA10` e calcular o troco.
 
-No GitHub Actions, os dois grupos de teste rodam a cada push no Linux, no macOS e no Windows. A cobertura do Linux é enviada ao Codecov. O repositório precisa do segredo `CODECOV_TOKEN`.
+No GitHub Actions, os dois grupos de teste rodam a cada push no Linux, no macOS e no Windows. A cobertura do Linux é enviada ao Codecov. Em repositório público, o envio pode ser sem token. Se o Codecov exigir autenticação, cadastre o segredo `CODECOV_TOKEN`. A publicação do site fica em outro workflow, no GitHub Pages.

@@ -1,4 +1,4 @@
-import { requireProduct } from './catalog';
+import { requireProduct } from './catalog.js';
 
 export const MAX_LINE_QUANTITY = 20;
 

@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless';
-import { closeOrder } from '../src/domain/checkout';
-import type { CartLine } from '../src/domain/cart';
+import { closeOrder } from '../src/domain/checkout.js';
+import type { CartLine } from '../src/domain/cart.js';
 
 export default {
   async fetch(request: Request): Promise<Response> {

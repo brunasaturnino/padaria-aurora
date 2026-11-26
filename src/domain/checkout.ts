@@ -1,6 +1,6 @@
-import { describeLine, type CartLine } from './cart';
-import { previewOrder } from './discount';
-import { formatCents } from './money';
+import { describeLine, type CartLine } from './cart.js';
+import { previewOrder } from './discount.js';
+import { formatCents } from './money.js';
 
 export const paymentMethods = ['dinheiro', 'pix', 'cartao'] as const;
 

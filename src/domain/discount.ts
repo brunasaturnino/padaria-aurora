@@ -1,5 +1,5 @@
-import { requireProduct } from './catalog';
-import { subtotalCents, type CartLine } from './cart';
+import { requireProduct } from './catalog.js';
+import { subtotalCents, type CartLine } from './cart.js';
 
 export type Coupon =
   | { code: string; description: string; kind: 'percent'; percent: number }

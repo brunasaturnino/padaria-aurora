@@ -100,6 +100,8 @@ select {
   background: #fff;
 }
 
+.linha + .linha { margin-top: 14px; }
+
 .produto p,
 .linha p { margin: 6px 0; color: #6d5648; }
 
@@ -116,11 +118,22 @@ select {
 .preco { color: #2c1810; font-weight: 700; }
 
 button {
+  appearance: none;
   border: 0;
   border-radius: 999px;
   padding: 10px 14px;
   background: #8d3018;
   color: #fffaf4;
+  line-height: 1.2;
+}
+
+button[data-action="apply-coupon"],
+button[data-action="pay"] {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 12px;
+  padding: 12px 14px;
 }
 
 button.secundario {
@@ -135,7 +148,20 @@ button[aria-pressed="true"] {
   box-shadow: none;
 }
 
-.qtd { align-items: center; }
+.qtd {
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.qtd button[data-action="decrease"],
+.qtd button[data-action="increase"] {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+}
+
+.qtd button[data-action="remove"] { margin-left: 12px; }
 
 .qtd span {
   min-width: 1.5rem;

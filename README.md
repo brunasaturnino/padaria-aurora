@@ -61,9 +61,9 @@ A entrega deve ser feita pelo Moodle com estes cinco links:
 
 1. **Sistema em produção:** [aplicação publicada na Vercel](https://project-2n6p9.vercel.app/).
 2. **Repositório no GitHub:** [código-fonte do projeto](https://github.com/brunasaturnino/padaria-aurora).
-3. **Build no GitHub Actions:** [execução dos testes concluída com sucesso](https://github.com/brunasaturnino/padaria-aurora/actions/runs/45866212483). Antes da entrega, confira no [histórico do workflow](https://github.com/brunasaturnino/padaria-aurora/actions/workflows/testes.yml) se há uma execução bem-sucedida mais recente e envie o link direto dela.
+3. **Build no GitHub Actions:** [execução dos testes concluída com sucesso](https://github.com/brunasaturnino/padaria-aurora/actions/runs/45899604675).
 4. **Relatório no Codecov:** [página de cobertura de testes do projeto](https://app.codecov.io/github/brunasaturnino/padaria-aurora).
-5. **Vídeo no YouTube:** pendente de gravação e publicação; incluir o link do vídeo de apresentação do sistema antes da entrega.
+5. **Vídeo no YouTube:** [apresentação do sistema, das tecnologias, do uso de IA e dos testes](https://youtu.be/XH_v6PmrUiM).
 
 ## Uso de IA
 

@@ -39,9 +39,43 @@ function applyAction(state: OrderState, action: string, productId: string, categ
 
 export function mountBalcao(root: HTMLElement): void {
   let state = createOrder();
+  let saving = false;
 
   const draw = () => {
     root.innerHTML = renderBalcao(state);
+  };
+
+  const savePayment = async () => {
+    if (saving || state.receipt) return;
+    const checked = pay(state);
+    if (!checked.receipt) { state = checked; draw(); return; }
+    saving = true;
+    state = { ...checked, receipt: null, notice: 'Salvando pedido...' };
+    draw();
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cart: state.cart,
+          couponCode: state.appliedCoupon,
+          method: checked.receipt.method,
+          amountCents: checked.receipt.paidCents,
+        }),
+      });
+      if (response.status === 404 && /(^|\.)github\.io$|^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+        state = { ...state, receipt: checked.receipt, notice: 'Modo demonstração: pedido não salvo.' };
+        return;
+      }
+      const saved = await response.json() as { error?: string; receipt?: typeof checked.receipt };
+      if (!response.ok || !saved.receipt) throw new Error(saved.error || 'Não foi possível salvar o pedido.');
+      state = { ...state, receipt: saved.receipt, notice: 'Pedido salvo com sucesso.' };
+    } catch (error) {
+      state = { ...state, receipt: null, notice: error instanceof Error ? error.message : 'Não foi possível salvar o pedido.' };
+    } finally {
+      saving = false;
+      draw();
+    }
   };
 
   root.addEventListener('click', (event) => {
@@ -49,7 +83,9 @@ export function mountBalcao(root: HTMLElement): void {
     if (!(target instanceof Element)) return;
     const control = target.closest<HTMLElement>('[data-action]');
     if (!control || !root.contains(control)) return;
+    if (saving) return;
     state = readInputs(root, state);
+    if (control.dataset.action === 'pay') { void savePayment(); return; }
     state = applyAction(state, control.dataset.action ?? '', control.dataset.product ?? '', control.dataset.category ?? '');
     draw();
   });
@@ -66,7 +102,7 @@ export function mountBalcao(root: HTMLElement): void {
     event.preventDefault();
     state = readInputs(root, state);
     if (event.target.id === 'cupom') state = applyCoupon(state);
-    else if (event.target.id === 'recebido') state = pay(state);
+    else if (event.target.id === 'recebido') { void savePayment(); return; }
     else return;
     draw();
   });

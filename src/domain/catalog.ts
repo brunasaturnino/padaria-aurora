@@ -20,6 +20,7 @@ export type Product = {
   description: string;
   category: ProductCategory;
   priceCents: number;
+  image: string;
 };
 
 const products: readonly Product[] = [
@@ -29,6 +30,7 @@ const products: readonly Product[] = [
     description: 'Unidade quentinha, saída do forno.',
     category: 'paes',
     priceCents: 150,
+    image: 'pao-frances',
   },
   {
     id: 'pao-na-chapa',
@@ -36,6 +38,7 @@ const products: readonly Product[] = [
     description: 'Pão francês na chapa com manteiga.',
     category: 'paes',
     priceCents: 800,
+    image: 'pao-na-chapa',
   },
   {
     id: 'pao-de-queijo',
@@ -43,6 +46,7 @@ const products: readonly Product[] = [
     description: 'Porção com seis unidades.',
     category: 'paes',
     priceCents: 600,
+    image: 'pao-de-queijo',
   },
   {
     id: 'coxinha',
@@ -50,6 +54,7 @@ const products: readonly Product[] = [
     description: 'Coxinha de frango com catupiry.',
     category: 'salgados',
     priceCents: 900,
+    image: 'coxinha',
   },
   {
     id: 'misto',
@@ -57,6 +62,7 @@ const products: readonly Product[] = [
     description: 'Pão de forma, queijo e presunto.',
     category: 'salgados',
     priceCents: 1200,
+    image: 'misto',
   },
   {
     id: 'sonho',
@@ -64,6 +70,7 @@ const products: readonly Product[] = [
     description: 'Sonho recheado com creme.',
     category: 'doces',
     priceCents: 850,
+    image: 'sonho',
   },
   {
     id: 'bolo-fuba',
@@ -71,6 +78,7 @@ const products: readonly Product[] = [
     description: 'Fatia de bolo de fubá.',
     category: 'doces',
     priceCents: 700,
+    image: 'bolo-fuba',
   },
   {
     id: 'cafe',
@@ -78,6 +86,7 @@ const products: readonly Product[] = [
     description: 'Café coado, xícara pequena.',
     category: 'bebidas',
     priceCents: 500,
+    image: 'cafe',
   },
   {
     id: 'suco',
@@ -85,6 +94,7 @@ const products: readonly Product[] = [
     description: 'Suco natural, copo de 300 ml.',
     category: 'bebidas',
     priceCents: 900,
+    image: 'suco',
   },
 ];
 

@@ -55,14 +55,15 @@ O relatório HTML local fica em `coverage/index.html`. Os cinco fluxos e2e verif
 
 O workflow [Testes](https://github.com/brunasaturnino/padaria-aurora/actions/workflows/testes.yml) executa as duas suítes nos três sistemas operacionais. No Linux, envia `coverage/lcov.info` ao [Codecov](https://app.codecov.io/github/brunasaturnino/padaria-aurora) usando a autenticação OIDC do GitHub Actions. O workflow [Paginas](https://github.com/brunasaturnino/padaria-aurora/actions/workflows/paginas.yml) gera e publica a versão de demonstração no GitHub Pages.
 
-## Publicação com banco de dados
+## Submissão
 
-1. Crie um projeto PostgreSQL no [Neon](https://neon.com/) e execute o conteúdo de [`db/schema.sql`](db/schema.sql) no editor SQL do projeto.
-2. Crie um projeto na [Vercel](https://vercel.com/) com **Vite** como framework, `npm run build` como comando de build e `dist` como diretório de saída.
-3. Nas variáveis de ambiente do projeto Vercel, configure `DATABASE_URL` com a string de conexão do Neon. Mantenha essa variável apenas no servidor: não use o prefixo `VITE_` e não a inclua em commits.
-4. Faça o deploy. O projeto atual foi publicado a partir da cópia local com `vercel deploy --prod`. A função `api/orders.ts` recebe `POST /api/orders`, recalcula o pedido e o salva na tabela `orders`. Para automatizar futuros deploys a cada push, conecte o repositório GitHub nas configurações do projeto Vercel.
+A entrega deve ser feita pelo Moodle com estes cinco links:
 
-Sem `DATABASE_URL`, a API recusa o fechamento e informa que o banco não está configurado. Fora da Vercel, quando a rota `/api/orders` não existe, a interface continua em modo de demonstração e avisa que o pedido não foi salvo. O sistema registra vendas declaradas no balcão; Pix e cartão não são cobrados por um intermediador de pagamentos.
+1. **Sistema em produção:** [aplicação publicada na Vercel](https://project-2n6p9.vercel.app/).
+2. **Repositório no GitHub:** [código-fonte do projeto](https://github.com/brunasaturnino/padaria-aurora).
+3. **Build no GitHub Actions:** [execução dos testes concluída com sucesso](https://github.com/brunasaturnino/padaria-aurora/actions/runs/45866212483). Antes da entrega, confira no [histórico do workflow](https://github.com/brunasaturnino/padaria-aurora/actions/workflows/testes.yml) se há uma execução bem-sucedida mais recente e envie o link direto dela.
+4. **Relatório no Codecov:** [página de cobertura de testes do projeto](https://app.codecov.io/github/brunasaturnino/padaria-aurora).
+5. **Vídeo no YouTube:** pendente de gravação e publicação; incluir o link do vídeo de apresentação do sistema antes da entrega.
 
 ## Uso de IA
 

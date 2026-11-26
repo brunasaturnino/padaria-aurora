@@ -24,7 +24,7 @@ export function renderBalcao(state: OrderState): string {
       : products
           .map(
             (product) => `<article class="produto">
-              <img class="foto-produto" src="${import.meta.env.BASE_URL}products/${product.image}.svg" alt="${escapeHtml(product.name)}" loading="lazy" width="320" height="200" />
+              <img class="foto-produto" src="${import.meta.env.BASE_URL}products/${product.image}.jpg" alt="${escapeHtml(product.name)}" loading="lazy" width="320" height="200" />
               <h3>${escapeHtml(product.name)}</h3>
               <p>${escapeHtml(product.description)}</p>
               <p class="preco">${formatCents(product.priceCents)}</p>

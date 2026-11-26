@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-label="pao-de-queijo">
-<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#fff2c8"/><stop offset="1" stop-color="#dba445"/></linearGradient><radialGradient id="plate"><stop stop-color="#fffdf8"/><stop offset="1" stop-color="#ead6bd"/></radialGradient></defs>
-<rect width="320" height="200" fill="url(#bg)"/><circle cx="267" cy="37" r="79" fill="#ffffff" opacity=".12"/><circle cx="31" cy="180" r="68" fill="#ffffff" opacity=".12"/>
-<ellipse cx="160" cy="165" rx="112" ry="15" fill="#53301f" opacity=".14"/><ellipse cx="160" cy="142" rx="112" ry="38" fill="url(#plate)" stroke="#ffffff" stroke-width="5"/>
-<text x="160" y="135" text-anchor="middle" font-size="92" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">🧀</text>
-</svg>
